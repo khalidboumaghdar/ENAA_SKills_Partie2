@@ -1,0 +1,14 @@
+Index: brief-service/src/main/java/com/enaa/brief_service/controller/BriefController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.enaa.brief_service.controller;\r\n\r\npublic class BriefController {\r\n}\r\n
+===================================================================
+diff --git a/brief-service/src/main/java/com/enaa/brief_service/controller/BriefController.java b/brief-service/src/main/java/com/enaa/brief_service/controller/BriefController.java
+--- a/brief-service/src/main/java/com/enaa/brief_service/controller/BriefController.java	(revision 5554b41cb51581426592c1b681d2a2977ed04828)
++++ b/brief-service/src/main/java/com/enaa/brief_service/controller/BriefController.java	(date 1752075010713)
+@@ -1,4 +1,5 @@
+ package com.enaa.brief_service.controller;
+ 
+ public class BriefController {
++
+ }
