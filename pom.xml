@@ -21,11 +21,10 @@
         <java.version>17</java.version>
     </properties>
 
-    <!-- This section lists all your microservice sub-projects -->
     <modules>
 
         <module>brief-service</module>
-
+        <module>val-service</module>
     </modules>
 
 </project>
