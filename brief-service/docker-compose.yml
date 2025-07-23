@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: briefdb
+    ports:
+      - "3307:3306"  # Port hôte 3307 vers 3306 du container
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - enaa-network
+    healthcheck:
+      test: ["CMD", "mariadb-admin", "ping", "-h", "localhost", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+
+  brief-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: brief-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/briefdb?createDatabaseIfNotExist=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    networks:
+      - enaa-network
+
+volumes:
+  mysql-data:
+
+networks:
+  enaa-network:
+    driver: bridge
